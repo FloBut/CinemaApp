@@ -1,4 +1,4 @@
-package com.example.CinemaApp.entities;
+package com.example.CinemaApp.D_entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;

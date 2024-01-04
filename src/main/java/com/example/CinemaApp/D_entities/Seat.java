@@ -1,4 +1,4 @@
-package com.example.CinemaApp.entities;
+package com.example.CinemaApp.D_entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -12,6 +12,10 @@ public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    private int seatRows;
+    private int seatColumns;
+    private boolean status;
+    private Double extraPrice;
 
     @OneToMany(mappedBy = "seat", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     @JsonManagedReference("seat - ticket")
@@ -23,19 +27,13 @@ public class Seat {
     @JsonBackReference("cinemaRoom - seat")
     private CinemaRoom cinemaRoom;
 
-    private int setRows;
-    private int seatColumns;
-    private String seats;
-    private boolean status;
-
-
     public Seat() {
     }
-    public Seat(int setRows, int seatColumns, String seats, boolean status) {
-        this.setRows = setRows;
+    public Seat(int seatRows, int seatColumns, String seats, boolean status, Double extraPrice) {
+        this.seatRows = seatRows;
         this.seatColumns = seatColumns;
-        this.seats = String.valueOf(List.of(setRows + "of" + seatColumns));
         this.status = true;
+        this.extraPrice = extraPrice;
     }
 
     public Long getId() {
@@ -62,12 +60,12 @@ public class Seat {
         this.cinemaRoom = cinemaRoom;
     }
 
-    public int getSetRows() {
-        return setRows;
+    public int getSeatRows() {
+        return seatRows;
     }
 
-    public void setSetRows(int setRows) {
-        this.setRows = setRows;
+    public void setSeatRows(int setRows) {
+        this.seatRows = setRows;
     }
 
     public int getSeatColumns() {
@@ -78,19 +76,19 @@ public class Seat {
         this.seatColumns = seatColumns;
     }
 
-    public String getSeats() {
-        return seats;
-    }
-
-    public void setSeats(String seats) {
-        this.seats = seats;
-    }
-
     public boolean isStatus() {
         return status;
     }
 
     public void setStatus(boolean status) {
-        this.status = status;
+        this.status = true;
+    }
+
+    public Double getExtraPrice() {
+        return extraPrice;
+    }
+
+    public void setExtraPrice(Double extraPrice) {
+        this.extraPrice = extraPrice;
     }
 }

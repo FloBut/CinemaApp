@@ -1,4 +1,4 @@
-package com.example.CinemaApp.entities;
+package com.example.CinemaApp.D_entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -6,10 +6,12 @@ import jakarta.persistence.*;
 
 import java.util.List;
 @Entity
-public class Order {
+public class OrderCinema {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+    @Column
+    private Double totalPrice;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -20,7 +22,7 @@ public class Order {
     @JsonManagedReference("order - ticket")
     List<Ticket> tickets;
 
-    public Order() {
+    public OrderCinema() {
     }
 
     public Long getId() {
@@ -29,6 +31,14 @@ public class Order {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public User getUser() {

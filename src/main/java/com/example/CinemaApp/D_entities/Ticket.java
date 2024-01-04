@@ -1,4 +1,4 @@
-package com.example.CinemaApp.entities;
+package com.example.CinemaApp.D_entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -9,10 +9,11 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+
     @ManyToOne
     @JoinColumn(name = "order_id")
-    @JsonBackReference("order - ticket")
-    private Order order;
+    @JsonBackReference("orderCinema - ticket")
+    private OrderCinema orderCinema;
 
     @ManyToOne
     @JoinColumn(name = "seat_id")
@@ -34,12 +35,12 @@ public class Ticket {
         this.id = id;
     }
 
-    public Order getOrder() {
-        return order;
+    public OrderCinema getOrderCinema() {
+        return orderCinema;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderCinema(OrderCinema orderCinema) {
+        this.orderCinema = orderCinema;
     }
 
     public Seat getSeat() {

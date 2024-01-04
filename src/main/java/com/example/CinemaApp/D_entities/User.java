@@ -1,4 +1,4 @@
-package com.example.CinemaApp.entities;
+package com.example.CinemaApp.D_entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -15,7 +15,7 @@ public class User {
     String name;
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     @JsonManagedReference("user-order")
-    private List<Order> orders;
+    private List<OrderCinema> orderCinemas;
 
     @ManyToMany(mappedBy ="users",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JsonManagedReference("users-roles")
@@ -25,9 +25,9 @@ public class User {
     public User() {
     }
 
-    public User(String name, List<Order> orders, Set<Role> roles) {
+    public User(String name, List<OrderCinema> orderCinemas, Set<Role> roles) {
         this.name = name;
-        this.orders = orders;
+        this.orderCinemas = orderCinemas;
         this.roles = roles;
     }
 
@@ -55,11 +55,11 @@ public class User {
         this.roles = roles;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public List<OrderCinema> getOrders() {
+        return orderCinemas;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setOrders(List<OrderCinema> orderCinemas) {
+        this.orderCinemas = orderCinemas;
     }
 }

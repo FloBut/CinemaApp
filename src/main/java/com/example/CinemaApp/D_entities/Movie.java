@@ -1,4 +1,4 @@
-package com.example.CinemaApp.entities;
+package com.example.CinemaApp.D_entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -9,9 +9,13 @@ import java.util.List;
 public class Movie {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    Long id;
+    private Long id;
     @Column
-    String name;
+    private String name;
+
+    @Column
+    private Double moviePrice;
+
     @OneToMany(mappedBy = "movie", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     @JsonManagedReference("movie - projection")
     List<Projection> projections;
@@ -41,5 +45,13 @@ public class Movie {
 
     public void setProjections(List<Projection> projections) {
         this.projections = projections;
+    }
+
+    public Double getMoviePrice() {
+        return moviePrice;
+    }
+
+    public void setMoviePrice(Double moviePrice) {
+        this.moviePrice = moviePrice;
     }
 }
