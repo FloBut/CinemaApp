@@ -1,31 +1,30 @@
 package com.example.CinemaApp.E_DTO;
 
 public class ExtraPriceDTO {
-    private Integer startRow;
-    private Integer endRow;
+    private Integer startingRow;
+    private Integer endingRow;
     private Double extraPrice;
 
-    public ExtraPriceDTO(Integer starRow, Integer endRow, Double extraPrice) {
-        this.startRow = starRow;
-        this.endRow = endRow;
+    public ExtraPriceDTO(Integer staringRow, Integer endingRow, Double extraPrice) {
+        this.startingRow = staringRow;
+        this.endingRow = endingRow;
         this.extraPrice = extraPrice;
     }
 
-    public Integer getStartRow() {
-        return startRow;
+    public Integer getStartingRow() {
+        return startingRow;
     }
 
-    public void setStartRow(Integer starRow) {
-        this.startRow = starRow;
+    public void setStartingRow(Integer startingRow) {
+        this.startingRow = startingRow;
     }
 
-
-    public Integer getEndRow() {
-        return endRow;
+    public Integer getEndingRow() {
+        return endingRow;
     }
 
-    public void setEndRow(Integer endRow) {
-        this.endRow = endRow;
+    public void setEndingRow(Integer endingRow) {
+        this.endingRow = endingRow;
     }
 
     public Double getExtraPrice() {

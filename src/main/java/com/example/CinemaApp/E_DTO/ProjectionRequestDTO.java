@@ -3,29 +3,28 @@ package com.example.CinemaApp.E_DTO;
 import java.time.LocalDateTime;
 
 public class ProjectionRequestDTO {
-    private LocalDateTime startDate;
+    private LocalDateTime startTime;
 
-    private LocalDateTime endDate;
+    private LocalDateTime endTime;
 
-    public ProjectionRequestDTO(LocalDateTime startDate, LocalDateTime endDate) {
-        this.startDate = startDate;
-        this.endDate = endDate;
+    public ProjectionRequestDTO(LocalDateTime startTime, LocalDateTime endTime) {
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
-    public LocalDateTime getStartDate() {
-        return startDate;
+    public LocalDateTime getStartTime() {
+        return startTime;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
     }
 
-    public LocalDateTime getEndDate() {
-        return endDate;
+    public LocalDateTime getEndTime() {
+        return endTime;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
-
 }

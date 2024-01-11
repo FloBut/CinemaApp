@@ -1,12 +1,14 @@
 package com.example.CinemaApp.E_DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class OrderCinemaRequestDTO {
     private Long projectionID;
 
     private Long userId;
-
+    @JsonProperty("seats")
     private List<TicketRequestDTO> ticketRequestDTOs;
 
     public OrderCinemaRequestDTO(Long projectionID, Long userId, List<TicketRequestDTO> ticketRequestDTOs) {

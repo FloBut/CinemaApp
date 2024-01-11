@@ -1,5 +1,7 @@
 package com.example.CinemaApp.E_DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class MovieRequestDTO {
@@ -8,13 +10,13 @@ public class MovieRequestDTO {
     String name;
     private Double moviePrice;
     private Long cinemaRoomId;
-
+@JsonProperty("dates")
     List<ProjectionRequestDTO> projectionRequestDTOs;
 
-    public MovieRequestDTO(String name, Double moviePrice, Long cinemaRoomId, List<ProjectionRequestDTO> projectionRequestDTOs ) {
+    public MovieRequestDTO(String name, Long cinemaRoomId, Double moviePrice, List<ProjectionRequestDTO> projectionRequestDTOs) {
         this.name = name;
-        this.moviePrice = moviePrice;
         this.cinemaRoomId = cinemaRoomId;
+        this.moviePrice = moviePrice;
         this.projectionRequestDTOs = projectionRequestDTOs;
     }
 

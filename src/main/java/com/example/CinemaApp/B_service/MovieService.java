@@ -30,10 +30,11 @@ public class MovieService {
     //tre sa adug un film nou
     @Transactional
     public Movie addMovie(MovieRequestDTO movieRequestDTO) {
+        CinemaRoom cinemaRoom = cinemaRoomRepository.findById(movieRequestDTO.getCinemaRoomId()).orElseThrow(() -> new RuntimeException("cinema room not found"));
         //imi construiesc filmul
         Movie movie = new Movie();
         //imi trebuie cinemaRoomul cu Id-ul mentionat in obiectul DTO
-        CinemaRoom cinemaRoom = cinemaRoomRepository.findById(movieRequestDTO.getCinemaRoomId()).orElseThrow(() -> new RuntimeException("cinema room not found"));
+
         // pentru film trebuie sa ii setez:
             //numele
             //pretul
@@ -58,8 +59,8 @@ public class MovieService {
     @Transactional
     public Projection mapFromDTOToProjection(ProjectionRequestDTO projectionRequestDTO, Movie movie, CinemaRoom cinemaRoom) {
         Projection projection = new Projection();
-        projection.setStartDate(projectionRequestDTO.getStartDate());
-        projection.setEndDate(projectionRequestDTO.getEndDate());
+        projection.setStartDate(projectionRequestDTO.getStartTime());
+        projection.setEndDate(projectionRequestDTO.getEndTime());
         projection.setMovie(movie);
         projection.setCinemaRoom(cinemaRoom);
         return projection;

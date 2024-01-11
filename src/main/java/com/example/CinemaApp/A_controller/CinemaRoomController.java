@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("CinemaRoom")
+@RequestMapping("cinemaroom")
 public class CinemaRoomController {
     // imi creez un obiect de tip CinemaService pentru a putea apela
         // metoda de adaugare a unei sali de cinema

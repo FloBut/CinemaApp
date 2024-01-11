@@ -15,11 +15,11 @@ public class OrderCinema {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference("user-order")
+    @JsonBackReference("user-orderCinema")
     private User user;
 
-    @OneToMany(mappedBy = "order",cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
-    @JsonManagedReference("order - ticket")
+    @OneToMany(mappedBy = "orderCinema",cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    @JsonManagedReference("orderCinema - ticket")
     List<Ticket> tickets;
 
     public OrderCinema() {

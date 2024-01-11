@@ -43,8 +43,8 @@ public class CinemaRoomService {
         //dupa ce mi am construit un loc imi fac o lista de locuri si
         //aduag fiecare loc in lista
         List<Seat> result = new ArrayList<>();
-        for (int i = 1; i < cinemaRoomRequestDTO.getSeatRows(); i++) {
-            for (int j = 1; j < cinemaRoomRequestDTO.getSeatColumns(); j++) {
+        for (int i = 1; i <= cinemaRoomRequestDTO.getSeatRows(); i++) {
+            for (int j = 1; j <= cinemaRoomRequestDTO.getSeatColumns(); j++) {
                 //imi crez un loc gol pentru care voi seta
                 //disponibilitatea
                 //extraprice
@@ -54,12 +54,10 @@ public class CinemaRoomService {
                 Seat seat = new Seat();
                 seat.setSeatRows(i);
                 seat.setSeatColumns(j);
-                seat.setStatus(true);
                 seat.setCinemaRoom(cinemaRoom);
                 //extraprice a fost setat pentru randuri de aceea aleg in functie de i
                 //si ma folosesc de o metoda in care voi seta extraprice -ul
                 seat.setExtraPrice(getExtraPrice(i, cinemaRoomRequestDTO.getExtraPrice()));
-
                 result.add(seat);
 
             }
@@ -80,8 +78,8 @@ public class CinemaRoomService {
            }
          */
          Optional <Double> extraPriceOptional = extraPriceDTOS.stream()
-                .filter(extraPriceDTO -> row > extraPriceDTO.getStartRow()
-                        && row < extraPriceDTO.getEndRow())
+                .filter(extraPriceDTO -> row >= extraPriceDTO.getStartingRow()
+                        && row <= extraPriceDTO.getEndingRow())
                 .map(extraPriceDTO -> extraPriceDTO.getExtraPrice())
                 .findFirst();
          return extraPriceOptional.orElse(0.0);

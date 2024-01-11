@@ -14,7 +14,6 @@ public class Seat {
     Long id;
     private int seatRows;
     private int seatColumns;
-    private boolean status;
     private Double extraPrice;
 
     @OneToMany(mappedBy = "seat", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
@@ -29,10 +28,9 @@ public class Seat {
 
     public Seat() {
     }
-    public Seat(int seatRows, int seatColumns, String seats, boolean status, Double extraPrice) {
+    public Seat(int seatRows, int seatColumns, String seats, Double extraPrice) {
         this.seatRows = seatRows;
         this.seatColumns = seatColumns;
-        this.status = true;
         this.extraPrice = extraPrice;
     }
 
@@ -74,14 +72,6 @@ public class Seat {
 
     public void setSeatColumns(int seatColumns) {
         this.seatColumns = seatColumns;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = true;
     }
 
     public Double getExtraPrice() {

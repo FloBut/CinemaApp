@@ -14,7 +14,7 @@ public class User {
     @Column
     String name;
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
-    @JsonManagedReference("user-order")
+    @JsonManagedReference("user-orderCinema")
     private List<OrderCinema> orderCinemas;
 
     @ManyToMany(mappedBy ="users",cascade = {CascadeType.PERSIST, CascadeType.MERGE})
