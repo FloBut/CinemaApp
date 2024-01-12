@@ -13,6 +13,8 @@ public class User {
 
     @Column
     String name;
+    @Column
+    private String pass;
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     @JsonManagedReference("user-orderCinema")
     private List<OrderCinema> orderCinemas;
@@ -25,10 +27,9 @@ public class User {
     public User() {
     }
 
-    public User(String name, List<OrderCinema> orderCinemas, Set<Role> roles) {
+    public User(String name, String pass) {
         this.name = name;
-        this.orderCinemas = orderCinemas;
-        this.roles = roles;
+        this.pass = pass;
     }
 
     public Long getId() {

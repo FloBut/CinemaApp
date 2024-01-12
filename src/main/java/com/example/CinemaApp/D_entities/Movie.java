@@ -14,6 +14,13 @@ public class Movie {
     private String name;
 
     @Column
+    private String rated;
+    @Column
+    private String genre;
+    @Column
+    private String ratings;
+
+    @Column
     private Double moviePrice;
 
     @OneToMany(mappedBy = "movie", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)

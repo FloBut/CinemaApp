@@ -118,17 +118,19 @@ public class OrderCinemaService {
         Projection projection = projectionRepository.findById(orderCinemaRequestDTO.getProjectionID()).orElseThrow(() -> new RuntimeException("projection not found"));
         //imi creez o noua comanda
         OrderCinema orderCinema = new OrderCinema();
+        orderCinema.setTickets(generateOrderTicktes(orderCinema, projection, orderCinemaRequestDTO.getTicketRequestDTOs()));
         //imi setez userul
         orderCinema.setUser(user);
+
+
         //ar trebui sa calculez pretul total pentru tiketele emise pentru aceasta comanda
         //dar mai intai ar ttrebui sa am tiketele in functie de proiectie
-
         orderCinema.setTotalPrice(computeTotalPrice(orderCinema.getTickets()));
-        orderCinema.setTickets(generateOrderTicktes(orderCinema, projection, orderCinemaRequestDTO.getTicketRequestDTOs()));
+
         OrderCinema savedOrderCinema = orderCinemaRepository.save(orderCinema);
-        pdfGenerationService.generatePdf("ai cumparat bilet la filmul " + projection.getMovie().getName(), "src/main/resources/order.pdf");
-        emailService.sendMessageWithAttachment(user.getName(), "bilete", "ai luat bilete", "src/main/resources/order.pdf");
-        return savedOrderCinema;
+       pdfGenerationService.generatePdf("ai cumparat bilet la filmul " + projection.getMovie().getName(), "src/main/resources/orderCinema.pdf");
+       emailService.sendMessageWithAttachment(user.getName(), "bilete", "ai luat bilete", "src/main/resources/orderCinema.pdf");
+       return savedOrderCinema;
     }
     @Transactional
     public List<Ticket> generateOrderTicktes(OrderCinema orderCinema, Projection projection, List<TicketRequestDTO> ticketRequestDTOs) {

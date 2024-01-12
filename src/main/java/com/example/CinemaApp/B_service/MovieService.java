@@ -41,6 +41,15 @@ public class MovieService {
             //id ul salii
             //lista de proiectii
         movie.setName(movieRequestDTO.getName());
+        // Celelalte detalii ale filmului se vor popula printr-un request la un API,
+        //adica sa ne aduca genul,descrierea si un rating
+        //imi pun ca si coloane in movie aceste 3 entitati si apoi ar trebui sa aplez api extern
+        //sa imi completez atributele acestor entitati cu datele oferite de api extern inainte sa salvez
+        //filmul in baza de date
+
+        //movie.setGenre(pasez ce am primit din api extern)
+        //http://www.omdbapi.com/?t=Goodfellas
+        //{"Title":"Goodfellas","Year":"1990","Rated":"R","Released":"21 Sep 1990","Runtime":"145 min","Genre":"Biography, Crime, Drama","Director":"Martin Scorsese","Writer":"Nicholas Pileggi, Martin Scorsese","Actors":"Robert De Niro, Ray Liotta, Joe Pesci","Plot":"The story of Henry Hill and his life in the mafia, covering his relationship with his wife Karen and his mob partners Jimmy Conway and Tommy DeVito.","Language":"English, Italian","Country":"United States","Awards":"Won 1 Oscar. 44 wins & 38 nominations total","Poster":"https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"8.7/10"},{"Source":"Rotten Tomatoes","Value":"94%"},{"Source":"Metacritic","Value":"92/100"}],"Metascore":"92","imdbRating":"8.7","imdbVotes":"1,236,150","imdbID":"tt0099685","Type":"movie","DVD":"15 Aug 2008","BoxOffice":"$46,909,721","Production":"N/A","Website":"N/A","Response":"True"}
         movie.setMoviePrice(movieRequestDTO.getMoviePrice());
         movie.setProjections(generateMovieProjections(movieRequestDTO.getProjectionRequestDTOs(),movie, cinemaRoom));
         return movieRepository.save(movie);

@@ -30,5 +30,6 @@ public class OrderCinemaController {
         } catch (MessagingException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
+
     }
 }
