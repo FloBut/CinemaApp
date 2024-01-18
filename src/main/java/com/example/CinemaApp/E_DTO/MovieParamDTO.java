@@ -3,8 +3,6 @@ package com.example.CinemaApp.E_DTO;
 public class MovieParamDTO {
 
     private String movieName;
-
-
     private String rated;
 
     private String genre;

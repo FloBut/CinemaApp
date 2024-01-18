@@ -1,8 +1,8 @@
 package com.example.CinemaApp.A_controller;
 
-import com.example.CinemaApp.E_DTO.CinemaRoomRequestDTO;
-import com.example.CinemaApp.D_entities.CinemaRoom;
 import com.example.CinemaApp.B_service.CinemaRoomService;
+import com.example.CinemaApp.D_entities.CinemaRoom;
+import com.example.CinemaApp.E_DTO.CinemaRoomRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +22,7 @@ public class CinemaRoomController {
         this.cinemaRoomService = cinemaRoomService;
     }
     //Verific daca s-a adaugat o noua sala de cinema folosindu ma de beenu de service
+
     @PostMapping
     ResponseEntity<CinemaRoom> addCinemaRoom(@RequestBody CinemaRoomRequestDTO cinemaRoomRequestDTO) {
         return ResponseEntity.ok(cinemaRoomService.addCinemaRoom(cinemaRoomRequestDTO));

@@ -17,6 +17,8 @@ public class Role {
     @Enumerated(EnumType.STRING)
     private RoleType roleType;
 
+
+
     @ManyToMany
     @JoinTable(
             name = "user-role",
@@ -38,10 +40,12 @@ public class Role {
     }
 
     public RoleType getRoleType() {
+
         return roleType;
     }
 
     public void setRoleType(RoleType roleType) {
+
         this.roleType = roleType;
     }
 

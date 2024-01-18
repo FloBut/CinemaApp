@@ -32,6 +32,7 @@ public class User {
         this.pass = pass;
     }
 
+
     public Long getId() {
         return id;
     }
