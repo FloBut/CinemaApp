@@ -14,7 +14,7 @@ public class User {
     @Column
     String name;
     @Column
-    private String pass;
+    private String password;
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     @JsonManagedReference("user-orderCinema")
     private List<OrderCinema> orderCinemas;
@@ -26,12 +26,6 @@ public class User {
 
     public User() {
     }
-
-    public User(String name, String pass) {
-        this.name = name;
-        this.pass = pass;
-    }
-
 
     public Long getId() {
         return id;
@@ -49,19 +43,27 @@ public class User {
         this.name = name;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<OrderCinema> getOrderCinemas() {
+        return orderCinemas;
+    }
+
+    public void setOrderCinemas(List<OrderCinema> orderCinemas) {
+        this.orderCinemas = orderCinemas;
+    }
+
     public Set<Role> getRoles() {
         return roles;
     }
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    public List<OrderCinema> getOrders() {
-        return orderCinemas;
-    }
-
-    public void setOrders(List<OrderCinema> orderCinemas) {
-        this.orderCinemas = orderCinemas;
     }
 }
